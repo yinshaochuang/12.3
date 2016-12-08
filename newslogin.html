@@ -12,10 +12,12 @@
     <link rel="stylesheet" href="css/swiper-3.4.0.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/jquery.fullpage.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/jquery1.js"></script>
     <script src="js/swiper-3.4.0.jquery.min.js"></script>
     <script src="js/swiper.animate1.0.2.min.js"></script>
-    <script src="js/jquery.fullpage.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery.validate.js"></script>
     <style>
         *{
             margin: 0;padding: 0;
@@ -34,6 +36,10 @@
         html,body{
             width: 100%;
             height:100%;
+            background: url("img/56a6dfed96c6a.jpg") no-repeat center;
+            -webkit-background-size:cover;
+            background-size: cover;
+            overflow: hidden;
         }
 
         .swiper-container{
@@ -54,11 +60,23 @@
             url('iconfont.ttf') format('truetype'),
             url('iconfont.svg#iconfont') format('svg');
         }
+        .photo1{
+            font-family: "iconfont";
+        }
+        .photo1:before{
+            content: "\e609";
+        }
         .user{
             font-family: "iconfont";
         }
         .user:before{
             content: "\e631";
+        }
+        .pass{
+            font-family: "iconfont";
+        }
+        .pass:before{
+            content: "\e6ec";
         }
         .sear{
             font-family: "iconfont";
@@ -118,121 +136,69 @@
             color: #fff;
         }
         .header div:nth-child(2){
-          position: absolute;
+            position: absolute;
             left:0;
             right:0;
             margin: 0 auto;
         }
-        .sousuo{
-            height:0.9rem;
-            width: 100%;
-            background: red;
-        }
-        .sousuo input{
-            height:100%;
-            width: 100%;
-            display: block;
-            box-sizing: border-box;
-            border: 0.1rem solid #ccc;
-            font-size: 0.36rem;
-        }
-        .inner4{
-            width: 100%;
-            height: 100%;
-        }
-        .inner4 div{
-            display: flex;
-            justify-content: space-around;
-        }
-        .inner4 span{
-            box-sizing: border-box;
-            font-size: 0.3rem;
-            padding: 0.2rem 0.2rem;
-            background: #ccc;
-            margin-top: 0.2rem;
+        .header div:nth-child(3){
+            position: absolute;
+            right:0.2rem;
+            z-index: 1;
         }
 
-
-        .nav{
-            width: 100%;
-            height: 0.9rem;
-            line-height: 0.9rem;
+        .photo{
+            width: 3rem;
+            height:3rem;
+            margin: 0 auto;
+            margin-top: 1.2rem;
+            border-radius: 50%;
+            border: 0.1rem solid #fff;
             text-align: center;
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.38rem;
-            padding:0 0.2rem;
-            background: rgba(30, 107, 235, 0.61);
-            box-sizing: border-box;
         }
-        .nav div{
-            width: 25%;
-            height:100%;
+        .photo1{
+            width: 100%;
+            height: 1rem;
+            margin-top: 0.4rem;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+        .photo2{
+            width: 100%;
+            height:1rem;
+            line-height: 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.36rem;
             color: #fff;
         }
 
-        .inner{
-            width: 100%;
-            height: 100%;
-            background: #F3F2F7;
-            margin:0 auto ;
+        .login{
+            width: 80%;
+            height: auto;
+            margin:0 auto;
+            margin-top: 0.8rem;
         }
-
-        .list{
-            width: 95%;
-            height: 3rem;
-            background: #fff;
-            margin: 0 auto;
-            box-sizing: border-box;
-            margin-bottom: 0.2rem;
-            padding:0.2rem 0.2rem;
-        }
-        .listimg{
-            width: 2.6rem;
-            height: 2.6rem;
-            background: pink;
-            border-radius: 0.15rem;
-            float: left;
-        }
-        .listword{
-            width: 3.85rem;
-            height: 2.6rem;
-            float: left;
-            margin-left:0.15rem ;
-        }
-        .listword h1{
-            margin-top: 0.3rem;
-            font-size: 0.34rem;
-        }
-        .listword p{
-            font-size: 0.26rem;
-            margin-top: 1rem;
-        }
-
-        .innerxq{
-            width: 100%;
-            line-height: 100%;
+        .login div{
             box-sizing: border-box;
             padding: 0 0.2rem;
-        }
-        .innerxq h2{
-            font-size: 0.5rem;
-
-        }
-        .innerxq spqn{
-            font-size: 0.26rem;
-        }
-        .innerxq p{
-            font-size: 0.36rem;
-            line-height: 0.6rem;
-            text-indent: 2em;
-        }
-        .banner{
             width: 100%;
-            height: 3.4rem;
-            background: black;
+            height:1rem;
+            font-size: 0.34rem;
+            color: #fff;
+            /*line-height:2rem ;*/
+            text-align: center;
         }
-
+        .login input{
+            width: 4rem;
+            height:0.6rem;
+            border:0;
+            color: #000;
+        }
+        .login div:nth-child(3) input{
+            background: #FFDA28;
+            font-size: 0.34rem;
+            border-radius: 0.4rem;
+        }
 
         .foot{
             width: 100%;
@@ -286,26 +252,63 @@
             }
 
         })
+        $("#signupForm").validate({
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 2
+                },
+                ps: {
+                    required:true,
+                    minlength:5
+                }
+            },
+            messages: {
+                username: {
+                    required: "请输入用户名",
+                    minlength: "用户名最少由两个字母组成"
+                },
+                ps: {
+                    required:"请输入密码",
+                    minlength:"密码长度不能少于5"
+                }
+            }
+        })
+
     })
 </script>
 <body>
 
-            <div class="header">
-                <div><a href="news2.html" class="backing"></a></div>
-                <div>新闻详情</div>
-            </div>
-            <div class="innerxq">
-                <h2>习近平：扎实推进军队规模结构和力量编成改革</h2>
-                <spqn>新华网&nbsp;12-03&nbsp;18:32</spqn>
-                <hr>
-                <p>新华社北京12月3日电 （记者曹智、李宣良）中央军委军队规模结构和力量编成改革工作会议12月2日至3日在京举行。中共中央总书记、国家主席、中央军委主席、中央军委深化国防和军队改革领导小组组长习近平在会议上发表重要讲话强调，军队规模结构和力量编成改革是深化国防和军队改革的重要组成部分，是推进我军组织形态现代化、构建中国特色现代军事力量体系的关键一步，是实现党在新形势下的强军目标、建设世界一流军队必须迈过的一道关口。全军要站在实现中国梦强军梦的战略高度，抓住机遇，一鼓作气，乘势而上，深入实施改革强军战略，把规模结构和力量编成改革推向前进，在中国特色强军之路上迈出新的更大步伐，以崭新的面貌迎接党的十九大胜利召开。</p>
-            </div>
-            <div class="foot">
-                <div><a href="news2.html" class="zhuye"></a></div>
-                <div><a href="" class="shoucang"></a></div>
-                <div><a href="" class="pinlun"></a></div>
-                <div><a href="javascript:;" class="more"></a></div>
-            </div>
+<div class="header">
+    <div><a href="news2.html" class="backing"></a></div>
+    <div>登录</div>
+    <div><a href="newszhece.html" >注册</a></div>
+</div>
+<div class="photo">
+    <div class="photo1"></div>
+    <div class="photo2">头像</div>
+</div>
+
+
+
+<div class="login">
+    <form class="cmxform" id="signupForm" method="get" action="">
+    <div> <span class="user"></span><input type="text" name="username" placeholder="用户名"></div>
+    <div><span class="pass"></span><input type="password" placeholder="密码" name="ps"></div>
+    <div><input type="submit" value="登录"></div>
+    </form>
+</div>
+
+
+
+
+<div class="foot">
+    <div><a href="news2.html" class="zhuye"></a></div>
+    <div><a href="" class="shoucang"></a></div>
+    <div><a href="" class="pinlun"></a></div>
+    <div><a href="javascript:;" class="more"></a></div>
+</div>
+
 
 </body>
 </html>

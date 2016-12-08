@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="full-screen" content="yes">
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="x5-orientation" content="portrait | landscape" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/swiper-3.4.0.min.css">
@@ -15,6 +20,13 @@
         *{
             margin: 0;padding: 0;
             list-style: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-appearance: none;
+            -webkit-text-size-adjust:100%;
+            -webkit-user-select:none;
+        }
+        p{
+            max-height:9999999px
         }
         a{
             text-decoration: none;
@@ -41,6 +53,12 @@
             url('iconfont.woff') format('woff'),
             url('iconfont.ttf') format('truetype'),
             url('iconfont.svg#iconfont') format('svg');
+        }
+        .user{
+            font-family: "iconfont";
+        }
+        .user:before{
+            content: "\e631";
         }
         .sear{
             font-family: "iconfont";
@@ -86,6 +104,9 @@
             line-height: 0.9rem;
             color: #fff;
             font-size: 0.44rem;
+            position: fixed;
+            top:0;
+            z-index: 2;
         }
         .header div:nth-child(1){
             position: absolute;
@@ -155,11 +176,11 @@
         }
         .listword h1{
             margin-top: 0.3rem;
-            font-size: 0.38rem;
+            font-size: 0.34rem;
         }
         .listword p{
             font-size: 0.26rem;
-            margin-top: 0.3rem;
+            margin-top: 1rem;
         }
 
 
@@ -201,7 +222,6 @@
         .banner a .swiper-slide:nth-child(5){
             background: green;
         }
-
         .foot{
            width: 100%;
             height: 0.9rem;
@@ -257,80 +277,77 @@
     })
 </script>
 <body>
-<div class="swiper-container">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide">
-            <div class="header">
-                <div><a href="news2.html" class="backing"></a></div>
-                <div>新闻列表</div>
-                <div><a href="news1.html" class="sear"></a></div>
+<div class="header">
+    <div><a href="news2.html" class="backing"></a></div>
+    <div>新闻列表</div>
+    <div><a href="news1.html" class="sear"></a></div>
+</div>
+<div class="banner">
+    <a href="">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 5</div>
             </div>
-            <div class="banner">
-                <a href="">
-                    <div class="swiper-container">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">Slide 1</div>
-                            <div class="swiper-slide">Slide 2</div>
-                            <div class="swiper-slide">Slide 3</div>
-                            <div class="swiper-slide">Slide 4</div>
-                            <div class="swiper-slide">Slide 5</div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                </a>
-            </div>
-            <div class="inner">
-                <div class="list">
-                    <div class="listimg">
-
-                    </div>
-                    <div class="listword">
-                        <h1>习近平：扎实推进军队规模结构和力量编成改革</h1>
-                        <p>置顶&nbsp;专题&nbsp;503评</p>
-                    </div>
-                </div>
-                <div class="list">
-                    <div class="listimg">
-
-                    </div>
-                    <div class="listword">
-                        <h1>习近平：扎实推进军队规模结构和力量编成改革</h1>
-                        <p>置顶&nbsp;专题&nbsp;503评</p>
-                    </div>
-                </div>
-                <div class="list">
-                    <div class="listimg">
-
-                    </div>
-                    <div class="listword">
-                        <h1>习近平：扎实推进军队规模结构和力量编成改革</h1>
-                        <p>置顶&nbsp;专题&nbsp;503评</p>
-                    </div>
-                </div>
-                <div class="list">
-                    <div class="listimg">
-
-                    </div>
-                    <div class="listword">
-
-                    </div>
-                </div>
-                <div class="list"></div>
-                <div class="list"></div>
-
-
-            </div>
-
-            <div class="foot">
-                <div><a href="news2.html" class="zhuye"></a></div>
-                <div><a href="" class="shoucang"></a></div>
-                <div><a href="" class="pinlun"></a></div>
-                <div><a href="javascript:;" class="more"></a></div>
-            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </a>
+</div>
+<div class="inner">
+    <div class="list">
+        <div class="listimg">
 
         </div>
-
+        <div class="listword">
+            <h1>习近平：扎实推进军队规模结构和力量编成改革</h1>
+            <p>置顶&nbsp;专题&nbsp;503评</p>
+        </div>
     </div>
+    <div class="list">
+        <div class="listimg">
+
+        </div>
+        <div class="listword">
+            <h1>习近平：扎实推进军队规模结构和力量编成改革</h1>
+            <p>置顶&nbsp;专题&nbsp;503评</p>
+        </div>
+    </div>
+    <div class="list">
+        <div class="listimg">
+
+        </div>
+        <div class="listword">
+            <h1>习近平：扎实推进军队规模结构和力量编成改革</h1>
+            <p>置顶&nbsp;专题&nbsp;503评</p>
+        </div>
+    </div>
+    <div class="list">
+        <div class="listimg">
+
+        </div>
+        <div class="listword">
+
+        </div>
+    </div>
+    <div class="list"></div>
+    <div class="list"></div>
+
+
 </div>
+
+<div class="foot">
+    <div><a href="news2.html" class="zhuye"></a></div>
+    <div><a href="" class="shoucang"></a></div>
+    <div><a href="" class="pinlun"></a></div>
+    <div><a href="javascript:;" class="more"></a></div>
+</div>
+
+
+
+
+
 </body>
 </html>
